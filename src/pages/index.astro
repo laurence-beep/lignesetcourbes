@@ -4,19 +4,16 @@ import "../styles/global.css";
 const navItems = [
 	"Particuliers",
 	"Professionnels",
-	"Services",
 	"Projets",
 	"Méthode",
-	"À propos",
 	"Contact",
 ];
 
 const projects = [
-	{ name: "Meudon", type: "Maison familiale", image: "/images/loft-colombes-hero.jpeg" },
-	{ name: "Boulogne", type: "Appartement rénové", image: "/images/interieur-sideboard.jpeg" },
-	{ name: "Viroflay", type: "Lieu de vie optimisé", image: "/images/loft-detail.jpeg" },
-	{ name: "Treeefle", type: "Espace collaboratif", image: "/images/atelier-codesign.jpg" },
-	{ name: "AXA Lab", type: "Environnement professionnel", image: "/images/offre-design.jpg" },
+	{ name: "Boulogne", type: "Appartement rénové" },
+	{ name: "Viroflay", type: "Lieu de vie optimisé" },
+	{ name: "Treeefle", type: "Espace collaboratif" },
+	{ name: "AXA Lab", type: "Environnement professionnel" },
 ];
 
 const methodSteps = [
@@ -42,8 +39,8 @@ const methodSteps = [
 		<title>Lignes et courbes - Architecture d'intérieur</title>
 	</head>
 	<body class="bg-paper text-ink">
-		<header class="site-shell sticky top-0 z-50 py-2">
-			<div class="surface flex items-center justify-between gap-4 px-5 py-2 shadow-none backdrop-blur-xl">
+		<header class="sticky top-0 z-50 border-b border-line-blue/10 bg-paper/94 backdrop-blur-xl">
+			<div class="site-shell flex min-h-20 items-center justify-between gap-4">
 				<a href="/" aria-label="Lignes et courbes" class="flex items-center gap-3">
 					<img src="/brand/lignes-et-courbes-logo.svg" alt="Lignes et courbes" class="h-12 w-auto sm:h-14" />
 				</a>
@@ -51,87 +48,101 @@ const methodSteps = [
 					{navItems.map((item) => <a href={`#${item.toLowerCase().replaceAll(" ", "-").replace("à", "a").replace("é", "e")}`} class="hover:text-line-blue">{item}</a>)}
 				</nav>
 				<a href="#contact" class="btn btn-primary hidden xl:inline-flex">Parler de mon projet</a>
+				<details class="relative lg:hidden">
+					<summary class="btn btn-secondary cursor-pointer list-none">Menu</summary>
+					<nav class="surface absolute right-0 top-[calc(100%+0.75rem)] grid min-w-60 gap-1 p-2 shadow-soft" aria-label="Navigation mobile">
+						{navItems.map((item) => <a href={`#${item.toLowerCase().replaceAll(" ", "-").replace("à", "a").replace("é", "e")}`} class="rounded-site px-4 py-3 text-sm font-semibold text-ink-soft hover:bg-line-blue-pale hover:text-line-blue">{item}</a>)}
+						<a href="#contact" class="btn btn-primary mt-1">Parler de mon projet</a>
+					</nav>
+				</details>
 			</div>
 		</header>
 
 		<main>
 			<section id="accueil">
-				<section class="relative min-h-[calc(100vh-142px)] overflow-hidden">
-					<img src="/images/loft-colombes-hero.jpeg" alt="Intérieur rénové par Lignes et courbes" class="absolute inset-0 h-full w-full object-cover" />
-					<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(31,38,48,.76),rgba(31,38,48,.42),rgba(31,38,48,.1))]"></div>
-					<div class="site-shell relative flex min-h-[calc(100vh-142px)] flex-col justify-center py-20 text-white">
-						<p class="eyebrow text-line-gold">Architecture d'intérieur - lieux de vie et de travail</p>
-						<h2 class="display-serif mt-5 max-w-4xl text-5xl md:text-7xl">Concevoir des lieux qui vous ressemblent - et qui vous apaisent</h2>
-						<p class="mt-7 max-w-2xl text-lg leading-8 text-white/86">
-							Une version plus douce de la première piste : le même niveau de cadrage, mais une entrée plus contemplative, centrée sur la justesse des usages, des matières et du quotidien.
-						</p>
-						<div class="mt-9 flex flex-col gap-3 sm:flex-row">
-							<a href="#contact" class="btn bg-white text-line-blue hover:bg-line-gold-soft">Parler de mon projet</a>
-							<a href="#projets" class="btn border-white/70 text-white hover:bg-white/12">Découvrir les projets</a>
+				<section class="border-b border-line-blue/10 bg-paper-warm">
+					<div class="site-shell grid gap-8 py-12 md:py-16 lg:min-h-[calc(100svh-80px)] lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-0 lg:py-20">
+						<figure class="hero-image-frame lg:pr-0">
+							<img src="/images/loft-colombes-hero.jpeg" alt="Cuisine lumineuse repensée par Lignes et courbes" class="aspect-[4/3] w-full rounded-site object-cover shadow-soft lg:aspect-[5/4]" />
+						</figure>
+						<div class="surface relative z-10 bg-paper p-7 shadow-soft md:p-10 lg:-ml-12 lg:p-12">
+							<p class="eyebrow">Concevoir avec justesse</p>
+							<h1 class="display-serif mt-5 text-5xl text-line-blue md:text-6xl">Chaque ligne répond à un usage. Chaque courbe, à une manière de vivre.</h1>
+							<p class="mt-6 text-lg leading-8 text-ink-soft">Une approche attentive pour faire émerger des lieux évidents à vivre, cohérents et durables.</p>
+							<div class="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+								<a href="#contact" class="btn btn-primary">Démarrer un projet</a>
+								<a href="#methode" class="btn btn-secondary">Notre méthode</a>
+							</div>
 						</div>
 					</div>
 				</section>
 
-					<section class="site-shell grid gap-10 py-20 lg:grid-cols-[0.8fr_1.2fr]">
+				<section class="border-b border-line-blue/10 bg-paper">
+					<div class="site-shell grid gap-10 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-24">
 						<div>
 							<p class="eyebrow">Une écoute, deux horizons</p>
-							<h3 class="mt-3 text-4xl font-semibold text-line-blue">Un cadre clair pour décider sans brusquer le projet</h3>
-							<p class="mt-5 text-ink-soft">Cette variante met davantage l'accent sur la confiance, la fluidité et la sensation d'accompagnement.</p>
+							<h3 class="display-serif mt-3 text-4xl text-line-blue">Un cadre clair pour décider sereinement</h3>
+							<p class="mt-5 text-ink-soft">Chaque projet commence par une compréhension fine du lieu, de vos usages et des décisions qui comptent vraiment.</p>
 						</div>
-						<div class="grid gap-4 md:grid-cols-2">
-							<a id="particuliers" href="#particuliers" class="surface p-7 shadow-none">
-								<p class="text-sm font-bold text-line-gold">Pour les particuliers</p>
+						<div class="grid border-y border-line-blue/15 md:grid-cols-2">
+							<article id="particuliers" class="py-7 pr-0 md:pr-7">
+								<p class="text-sm font-bold text-line-gold-ink">Pour les particuliers</p>
 								<h4 class="mt-4 text-2xl font-bold text-line-blue">Rendre un lieu évident à vivre</h4>
 								<p class="mt-4 text-ink-soft">Clarifier les priorités, révéler le potentiel et préparer les arbitrages avant les travaux.</p>
-							</a>
-							<a id="professionnels" href="#professionnels" class="surface p-7 shadow-none">
-								<p class="text-sm font-bold text-line-gold">Pour les professionnels</p>
+							</article>
+							<article id="professionnels" class="border-t border-line-blue/15 py-7 md:border-l md:border-t-0 md:pl-7">
+								<p class="text-sm font-bold text-line-gold-ink">Pour les professionnels</p>
 								<h4 class="mt-4 text-2xl font-bold text-line-blue">Créer un espace aligné et accueillant</h4>
 								<p class="mt-4 text-ink-soft">Faire parler la marque, les usages et les modes de collaboration sans surcharger l'espace.</p>
-							</a>
+							</article>
 						</div>
-					</section>
+						</div>
+				</section>
 
-					<section id="projets" class="bg-white py-20">
+				<section id="projets" class="border-b border-line-blue/10 bg-paper-warm py-20 lg:py-24">
 					<div class="site-shell">
 						<div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
 							<div>
 								<p class="eyebrow">Projets phares</p>
-								<h3 class="mt-3 max-w-3xl text-4xl font-semibold text-line-blue">Une sélection plus éditoriale, comme un carnet de lieux</h3>
+								<h3 class="display-serif mt-3 max-w-3xl text-4xl text-line-blue">Des espaces transformés avec précision et sensibilité</h3>
 							</div>
-							<p class="text-ink-soft">Les projets restent volontairement en aperçu pour garder la homepage lisible avant le travail de contenu détaillé.</p>
+							<p class="text-ink-soft">Maisons, appartements et lieux de travail : chaque réponse naît du contexte, des usages et de la personnalité de ses occupants.</p>
 						</div>
-						<div class="mt-10 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-							<article class="project-card">
-								<img src="/images/loft-colombes-hero.jpeg" alt="Meudon" class="aspect-[16/10]" />
-								<div class="p-6">
+						<div class="mt-12 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+							<article>
+								<img src="/images/loft-colombes-hero.jpeg" alt="Meudon" class="aspect-[16/10] w-full rounded-site object-cover shadow-soft" />
+								<div class="mt-6 border-l-2 border-line-gold pl-5">
 									<p class="eyebrow">Projet repère</p>
-									<h4 class="mt-2 text-2xl font-bold text-line-blue">Meudon</h4>
+									<h4 class="display-serif mt-2 text-3xl text-line-blue">Meudon</h4>
 									<p class="mt-2 text-ink-soft">Un lieu de vie transformé par les volumes, la lumière et les circulations.</p>
 								</div>
 							</article>
-							<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-								{projects.slice(1).map((project) => (
-									<a href="#projets" class="grid grid-cols-[96px_1fr] gap-4 border-t border-line-blue/15 py-4">
-										<img src={project.image} alt={project.name} class="h-24 w-24 rounded-site object-cover" />
+							<div class="grid content-start border-b border-line-blue/15">
+								{projects.map((project, index) => (
+									<article class="grid grid-cols-[3rem_1fr] items-center gap-4 border-t border-line-blue/15 py-6">
+										<span class="text-sm font-bold text-line-gold-ink">0{index + 2}</span>
 										<span>
 											<span class="block text-lg font-bold text-line-blue">{project.name}</span>
 											<span class="mt-1 block text-sm text-ink-soft">{project.type}</span>
 										</span>
-									</a>
+									</article>
 								))}
 							</div>
 						</div>
 					</div>
 				</section>
 
-					<section id="methode" class="site-shell py-20">
-					<div class="border-y border-line-blue/15 py-10">
-						<p class="eyebrow">Méthode</p>
-						<div class="mt-7 grid gap-6 md:grid-cols-4">
+				<section id="methode" class="border-b border-line-blue/10 bg-line-blue-pale/45">
+					<div class="site-shell grid gap-10 py-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16 lg:py-24">
+						<div>
+							<p class="eyebrow">Méthode</p>
+							<h3 class="display-serif mt-3 text-4xl text-line-blue">Avancer avec une vision claire à chaque étape</h3>
+							<p class="mt-5 text-ink-soft">Un processus lisible pour préserver l'intention du projet tout en maîtrisant les décisions concrètes.</p>
+						</div>
+						<div class="grid gap-x-8 md:grid-cols-2">
 							{methodSteps.map(([number, title, text]) => (
-								<article>
-									<p class="text-sm font-bold text-line-gold">{number}</p>
+								<article class="border-t border-line-blue/20 py-6">
+									<p class="text-sm font-bold text-line-gold-ink">{number}</p>
 									<h4 class="mt-3 text-xl font-bold text-line-blue">{title}</h4>
 									<p class="mt-3 text-sm leading-6 text-ink-soft">{text}</p>
 								</article>
@@ -141,11 +152,11 @@ const methodSteps = [
 				</section>
 			</section>
 
-				<section id="contact" class="bg-line-blue py-20 text-white">
-				<div class="site-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+			<section id="contact" class="bg-line-blue py-20 text-white lg:py-24">
+				<div class="site-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
 					<div>
-						<p class="eyebrow text-line-gold">Contact</p>
-						<h2 class="mt-3 text-4xl font-semibold md:text-5xl">Parlons du lieu que vous voulez transformer</h2>
+						<p class="eyebrow text-line-gold-soft">Contact</p>
+						<h2 class="display-serif mt-3 text-4xl md:text-5xl">Parlons du lieu que vous voulez transformer</h2>
 						<p class="mt-5 max-w-xl text-white/78">
 							Le formulaire prépare le cadrage : type de projet, budget, surface, localisation et délai.
 						</p>
@@ -155,16 +166,16 @@ const methodSteps = [
 							<p>+33 6 50 14 39 52</p>
 						</div>
 					</div>
-					<form class="grid gap-4 rounded-site border border-white/18 bg-white/10 p-5 backdrop-blur-md">
+					<form class="surface grid gap-4 bg-paper p-5 text-ink shadow-soft md:p-7">
 						<div class="grid gap-4 md:grid-cols-2">
-							<label class="grid gap-2 text-sm font-bold">Type de projet<select class="rounded-site border border-white/20 bg-white px-3 py-3 text-ink"><option>Particulier</option><option>Professionnel</option></select></label>
-							<label class="grid gap-2 text-sm font-bold">Budget<input class="rounded-site border border-white/20 bg-white px-3 py-3 text-ink" placeholder="Ex. 80 000 €" /></label>
-							<label class="grid gap-2 text-sm font-bold">Surface<input class="rounded-site border border-white/20 bg-white px-3 py-3 text-ink" placeholder="Ex. 90 m2" /></label>
-							<label class="grid gap-2 text-sm font-bold">Localisation<input class="rounded-site border border-white/20 bg-white px-3 py-3 text-ink" placeholder="Sèvres, Boulogne, Paris..." /></label>
+							<label class="grid gap-2 text-sm font-bold">Type de projet<select class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink"><option>Particulier</option><option>Professionnel</option></select></label>
+							<label class="grid gap-2 text-sm font-bold">Budget<input class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Ex. 80 000 €" /></label>
+							<label class="grid gap-2 text-sm font-bold">Surface<input class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Ex. 90 m2" /></label>
+							<label class="grid gap-2 text-sm font-bold">Localisation<input class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Sèvres, Boulogne, Paris..." /></label>
 						</div>
-						<label class="grid gap-2 text-sm font-bold">Délai<input class="rounded-site border border-white/20 bg-white px-3 py-3 text-ink" placeholder="Ex. emménagement en septembre" /></label>
-						<label class="grid gap-2 text-sm font-bold">Message<textarea class="min-h-32 rounded-site border border-white/20 bg-white px-3 py-3 text-ink" placeholder="Quelques mots sur le lieu, vos envies et vos contraintes"></textarea></label>
-						<button type="button" class="btn bg-line-gold text-line-blue hover:bg-line-gold-soft">Parler de mon projet</button>
+						<label class="grid gap-2 text-sm font-bold">Délai<input class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Ex. emménagement en septembre" /></label>
+						<label class="grid gap-2 text-sm font-bold">Message<textarea class="min-h-32 rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Quelques mots sur le lieu, vos envies et vos contraintes"></textarea></label>
+						<button type="button" class="btn btn-primary">Parler de mon projet</button>
 					</form>
 				</div>
 			</section>
