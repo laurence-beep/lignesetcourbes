@@ -2,10 +2,11 @@
 import "../styles/global.css";
 
 const navItems = [
+	"Accueil",
 	"Particuliers",
 	"Professionnels",
 	"Projets",
-	"Méthode",
+	"Accompagnement",
 	"Contact",
 ];
 
@@ -65,11 +66,10 @@ const googleReviews = [
 
 const googleReviewsUrl = "https://www.google.com/maps?cid=15104223004502740442";
 
-const methodSteps = [
-	["01", "Clarifier", "Objectifs, contraintes, budget et potentiel du lieu."],
-	["02", "Concevoir", "Plans, scénarios d'usage, matières, couleurs et mobilier."],
-	["03", "Préparer", "Dossier de consultation, devis, arbitrages et planning."],
-	["04", "Réaliser", "Coordination, suivi, ajustements et livraison sereine."],
+const accompanimentSteps = [
+	["01", "Étudier et décider", "Analyser le lieu, préciser les besoins, explorer les scénarios et établir un premier ordre de grandeur pour orienter le projet."],
+	["02", "Concevoir au juste niveau", "Définir les matériaux, les couleurs, les équipements et la décoration, ou développer une transformation complète avec plans, agencements et mobilier sur mesure."],
+	["03", "Préparer et suivre les travaux", "Définir les lots, consulter les entreprises, analyser les offres, aider au choix et assurer le suivi prévu jusqu’à la réception."],
 ];
 
 ---
@@ -88,19 +88,19 @@ const methodSteps = [
 		<title>Architecte d'intérieur à Sèvres | Rénovation globale | lignes et courbes</title>
 	</head>
 	<body class="bg-paper text-ink">
-		<header class="sticky top-0 z-50 border-b border-line-blue/10 bg-paper/94 backdrop-blur-xl">
+		<header class="sticky top-0 z-50 border-b border-line-gold/35 bg-paper/98 backdrop-blur-xl">
 			<div class="site-shell flex min-h-20 items-center justify-between gap-4">
 				<a href="/" aria-label="Lignes et courbes" class="flex items-center gap-3">
-					<img src="/brand/lignes-et-courbes-logo.svg" alt="Lignes et courbes" class="h-12 w-auto sm:h-14" />
+					<img src="/brand/lignes-et-courbes-logo.svg" alt="Lignes et courbes" class="h-14 w-auto sm:h-16" />
 				</a>
-				<nav class="hidden items-center gap-5 text-sm font-semibold text-ink-soft lg:flex" aria-label="Navigation principale">
-					{navItems.map((item) => <a href={`#${item.toLowerCase().replaceAll(" ", "-").replace("à", "a").replace("é", "e")}`} class="hover:text-line-blue">{item}</a>)}
+				<nav class="hidden items-center gap-5 text-sm font-medium text-ink-soft lg:flex" aria-label="Navigation principale">
+					{navItems.map((item) => <a href={`#${item.toLowerCase().replaceAll(" ", "-").replace("à", "a").replace("é", "e")}`} class="hover:text-line-teal-ink">{item}</a>)}
 				</nav>
 				<a href="#contact" class="btn btn-primary hidden xl:inline-flex">Parler de mon projet</a>
 				<details class="relative lg:hidden">
 					<summary class="btn btn-secondary cursor-pointer list-none">Menu</summary>
 					<nav class="surface absolute right-0 top-[calc(100%+0.75rem)] grid min-w-60 gap-1 p-2 shadow-soft" aria-label="Navigation mobile">
-						{navItems.map((item) => <a href={`#${item.toLowerCase().replaceAll(" ", "-").replace("à", "a").replace("é", "e")}`} class="rounded-site px-4 py-3 text-sm font-semibold text-ink-soft hover:bg-line-blue-pale hover:text-line-blue">{item}</a>)}
+						{navItems.map((item) => <a href={`#${item.toLowerCase().replaceAll(" ", "-").replace("à", "a").replace("é", "e")}`} class="rounded-site px-4 py-3 text-sm font-medium text-ink-soft hover:bg-line-blue-pale hover:text-line-teal-ink">{item}</a>)}
 						<a href="#contact" class="btn btn-primary mt-1">Parler de mon projet</a>
 					</nav>
 				</details>
@@ -111,12 +111,12 @@ const methodSteps = [
 			<section id="accueil">
 				<section class="border-b border-line-blue/10 bg-paper-warm">
 					<div class="site-shell grid gap-8 py-12 md:py-16 lg:min-h-[calc(100svh-80px)] lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-0 lg:py-20">
-						<figure class="hero-image-frame order-2 lg:order-1 lg:pr-0">
+						<figure class="hero-image-frame order-1 lg:pr-0">
 							<img src="/images/boulogne-hero-retouche-v2.jpg" alt="Cuisine ouverte blanche avec îlot central et suspension graphique dans un appartement à Boulogne-Billancourt" class="aspect-[4/3] w-full rounded-site object-cover shadow-soft lg:aspect-[5/4]" />
 						</figure>
-						<div class="surface relative z-10 order-1 bg-paper p-7 shadow-soft md:p-10 lg:order-2 lg:-ml-12 lg:p-12">
+						<div class="surface relative z-10 order-2 bg-paper p-7 shadow-soft md:p-10 lg:-ml-12 lg:p-12">
           <p class="eyebrow">Architecte d'intérieur à Sèvres · Paris et Ouest parisien</p>
-							<h1 class="display-serif mt-5 text-4xl text-line-blue md:text-5xl">Rénovation globale d'appartements et de maisons</h1>
+							<h1 class="display-serif mt-5 text-4xl text-line-blue md:text-[2.625rem]">Rénovation globale d'appartements et de maisons</h1>
 							<p class="mt-6 text-lg leading-8 text-ink-soft">Du studio à la maison familiale, lignes et courbes conçoit la transformation du lieu, prépare les travaux et en assure le suivi en Île-de-France.</p>
 							<p class="mt-4 text-sm font-semibold leading-6 text-line-blue">Conception partout en France · Partir des usages. Transformer les lieux.</p>
 							<div class="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
@@ -132,7 +132,7 @@ const methodSteps = [
 						<div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
 							<div>
 								<p class="eyebrow">Rénovations résidentielles</p>
-								<h2 class="display-serif mt-3 max-w-3xl text-4xl text-line-blue">Trois lieux, trois époques, une même exigence de transformation sur mesure</h2>
+								<h2 class="display-serif mt-3 max-w-3xl text-3xl text-line-blue md:text-4xl">Trois lieux, trois époques, une même exigence de transformation sur mesure</h2>
 							</div>
 							<p class="text-ink-soft">Appartement des années 2000, maison des années 30 ou logement neuf : chaque projet part des usages pour composer un lieu singulier, jusque dans les agencements et les détails.</p>
 						</div>
@@ -176,7 +176,7 @@ const methodSteps = [
 						<div class="flex flex-col gap-5 border-b border-line-blue/15 pb-7 md:flex-row md:items-end md:justify-between">
 							<div>
 								<p class="eyebrow">Avis clients</p>
-								<h2 class="display-serif mt-3 max-w-2xl text-3xl text-line-blue md:text-4xl">Des projets transformés, des travaux vécus sereinement</h2>
+								<h2 class="display-serif mt-3 max-w-2xl text-3xl text-line-blue md:text-4xl">Des lieux transformés, des travaux vécus sereinement</h2>
 							</div>
 							<div class="shrink-0 md:text-right">
 								<p class="text-lg font-bold tracking-[0.12em] text-line-gold-ink" aria-label="5 étoiles sur 5">★★★★★</p>
@@ -204,40 +204,43 @@ const methodSteps = [
 					<div class="site-shell grid gap-10 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-20">
 						<div>
 							<p class="eyebrow">Particuliers et professionnels</p>
-							<h3 class="display-serif mt-3 text-3xl text-line-blue">Révéler le potentiel des lieux pour transformer la manière d’y vivre et d’y travailler</h3>
+							<h3 class="display-serif mt-3 text-3xl text-line-blue md:text-4xl">Révéler le potentiel des lieux pour transformer la manière d’y vivre et d’y travailler</h3>
 							<p class="mt-5 text-sm leading-6 text-ink-soft">Chaque projet part des usages, des aspirations et du potentiel du bâti pour faire émerger une transformation juste et réalisable.</p>
 						</div>
 						<div class="grid border-y border-line-blue/15 md:grid-cols-[1.08fr_0.92fr]">
 							<article id="particuliers" class="py-7 pr-0 md:pr-8">
 								<p class="text-sm font-bold text-line-gold-ink">Pour les particuliers</p>
-								<h4 class="mt-4 text-xl font-bold text-line-blue">Repenser votre appartement ou votre maison autour de votre façon de vivre</h4>
+								<h4 class="mt-4 text-lg font-medium leading-7 text-line-blue">Repenser votre appartement ou votre maison autour de votre façon de vivre</h4>
 								<p class="mt-4 text-sm leading-6 text-ink-soft">Une transformation globale qui articule espaces, lumière, matériaux, agencements sur mesure et accompagnement des travaux.</p>
 							</article>
 							<article id="professionnels" class="border-t border-line-blue/15 py-7 md:border-l md:border-t-0 md:pl-8">
 								<p class="text-sm font-bold text-line-gold-ink">Pour les professionnels</p>
-								<h4 class="mt-4 text-xl font-bold text-line-blue">Transformer les espaces de travail avec celles et ceux qui les vivent</h4>
+								<h4 class="mt-4 text-lg font-medium leading-7 text-line-blue">Transformer les espaces de travail avec celles et ceux qui les vivent</h4>
 								<p class="mt-4 text-sm leading-6 text-ink-soft">Une démarche de co-conception pour faire émerger les usages, projeter les évolutions et créer un lieu cohérent avec l’identité et les ambitions de l’organisation.</p>
 							</article>
 						</div>
 					</div>
 				</section>
 
-				<section id="methode" class="border-b border-line-blue/10 bg-line-blue-pale/45">
-					<div class="site-shell grid gap-10 py-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16 lg:py-24">
-						<div>
-							<p class="eyebrow">Méthode</p>
-							<h3 class="display-serif mt-3 text-4xl text-line-blue">Avancer avec une vision claire à chaque étape</h3>
-							<p class="mt-5 text-ink-soft">Un processus lisible pour préserver l'intention du projet tout en maîtrisant les décisions concrètes.</p>
+				<section id="accompagnement" class="border-b border-line-blue/10 bg-line-blue-pale/45">
+					<div class="site-shell py-16 lg:py-20">
+						<div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
+							<div>
+								<p class="eyebrow">Votre accompagnement</p>
+								<h3 class="display-serif mt-3 text-3xl text-line-blue md:text-4xl">De la première décision au suivi des travaux</h3>
+							</div>
+							<p class="text-ink-soft">Étude d’orientation, conception ou préparation des travaux : la mission s’ajuste aux étapes dont vous avez réellement besoin.</p>
 						</div>
-						<div class="grid gap-x-8 md:grid-cols-2">
-							{methodSteps.map(([number, title, text]) => (
-								<article class="border-t border-line-blue/20 py-6">
-									<p class="text-sm font-bold text-line-gold-ink">{number}</p>
-									<h4 class="mt-3 text-xl font-bold text-line-blue">{title}</h4>
+						<div class="mt-10 grid border-y border-line-blue/20 md:grid-cols-3">
+							{accompanimentSteps.map(([number, title, text], index) => (
+								<article class:list={["py-7 md:px-7", index > 0 && "border-t border-line-blue/20 md:border-l md:border-t-0", index === 0 && "md:pl-0", index === accompanimentSteps.length - 1 && "md:pr-0"]}>
+									<p class="inline-flex size-10 items-center justify-center rounded-full border border-line-gold/80 text-xs font-medium tracking-[0.08em] text-line-gold-ink">{number}</p>
+									<h4 class="mt-4 text-lg font-medium leading-7 text-line-teal-ink">{title}</h4>
 									<p class="mt-3 text-sm leading-6 text-ink-soft">{text}</p>
 								</article>
 							))}
 						</div>
+						<p class="mt-6 max-w-4xl text-sm leading-6 text-ink-soft">Ces missions peuvent être confiées ensemble ou séparément. Les entreprises réalisent, facturent et assurent directement les travaux.</p>
 					</div>
 				</section>
 			</section>
@@ -246,7 +249,7 @@ const methodSteps = [
 				<div class="site-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
 					<div>
 						<p class="eyebrow text-line-gold-soft">Contact</p>
-						<h2 class="display-serif mt-3 text-4xl md:text-5xl">Parlons du lieu que vous voulez transformer</h2>
+						<h2 class="display-serif mt-3 text-3xl md:text-4xl">Parlons du lieu que vous voulez transformer</h2>
 						<p class="mt-5 max-w-xl text-white/78">
 							Le formulaire prépare le cadrage : type de projet, budget, surface, localisation et délai.
 						</p>
@@ -272,9 +275,14 @@ const methodSteps = [
 		</main>
 
 		<footer class="site-shell py-8 text-sm text-ink-soft">
-			<div class="flex flex-col justify-between gap-3 border-t border-line-blue/15 pt-6 md:flex-row">
-				<p>Lignes et courbes - Architecture d'intérieur</p>
-				<p>Sèvres - Boulogne - Meudon - Paris 16</p>
+			<div class="flex flex-col gap-5 border-t border-line-blue/15 pt-6 md:flex-row md:items-center md:justify-between">
+				<a href="/" aria-label="Retour à l’accueil">
+					<img src="/brand/lignes-et-courbes-logo-carre.svg" alt="Symbole lignes et courbes" class="h-40 w-auto" />
+				</a>
+				<div class="space-y-1 md:text-right">
+					<p>Lignes et courbes - Architecture d'intérieur</p>
+					<p>Sèvres - Boulogne - Meudon - Paris 16</p>
+				</div>
 			</div>
 		</footer>
 
