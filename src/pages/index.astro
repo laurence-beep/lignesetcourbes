@@ -13,7 +13,7 @@ const projects = [
 	{
 		number: "01",
 		name: "Meudon",
-		meta: "Appartement · 90 m² · Meudon (92)",
+		meta: "Appartement · 90 m²",
 		title: "Réinventer les espaces, révéler les personnalités",
 		description: "Une redistribution des volumes, une cuisine ouverte et des agencements sur mesure transforment un appartement cloisonné en lieu de vie lumineux, convivial et profondément personnel.",
 		details: "Rénovation complète · Coordination multi-intervenants · Suivi du chantier",
@@ -24,26 +24,46 @@ const projects = [
 	{
 		number: "02",
 		name: "Viroflay",
-		meta: "Maison des années 30 · env. 145 m² · Viroflay (78)",
+		meta: "Maison des années 30 · env. 145 m²",
 		title: "Faire évoluer une maison sans effacer son histoire",
 		description: "Une cuisine ouverte, une verrière et des aménagements sur mesure redonnent lumière, fluidité et convivialité à une maison familiale, tout en préservant son caractère.",
 		details: "Rénovation complète · Restructuration · Mobilier sur mesure",
-		image: "/images/projects/viroflay/viroflay-cover.jpg",
+		image: "/images/projects/viroflay/viroflay-cover-v2.jpg",
 		alt: "Cuisine ouverte avec banquette et verrière en bois dans une maison rénovée à Viroflay",
 		credit: "Photographies © Laurence Gaillard / lignes et courbes",
 	},
 	{
 		number: "03",
 		name: "Boulogne-Billancourt",
-		meta: "Appartement neuf · env. 45 m² · Boulogne-Billancourt (92)",
+		meta: "Appartement neuf · env. 45 m²",
 		title: "Donner une âme à un appartement neuf",
 		description: "Une cuisine avec îlot convivial, des rangements sur mesure et un intérieur inspiré par le design transforment un appartement neuf en lieu de vie singulier et fonctionnel.",
 		details: "Conception intérieure · Cuisine · Rangements et mobilier sur mesure",
-		image: "/images/projects/boulogne/boulogne-cover.webp",
-		alt: "Cuisine ouverte blanche avec îlot central et suspension graphique dans un appartement à Boulogne-Billancourt",
+		image: "/images/projects/boulogne/boulogne-project-cover.webp",
+		alt: "Salon lumineux avec meuble vert sur mesure et terrasse dans un appartement à Boulogne-Billancourt",
 		credit: "Photographies © Laurence Gaillard / lignes et courbes",
 	},
 ];
+
+const googleReviews = [
+	{
+		name: "Alexis B.",
+		context: "Rénovation complète d’un appartement",
+		quote: "Son exigence dans la préparation, la qualité des choix et la rigueur dans le pilotage du chantier nous ont permis de vivre les travaux sereinement.",
+	},
+	{
+		name: "Catherine",
+		context: "Transformation d’une maison",
+		quote: "Aujourd’hui, notre maison est à la fois plus agréable, plus fonctionnelle et plus accueillante, tout en restant fidèle à son esprit d’origine.",
+	},
+	{
+		name: "Virginie",
+		context: "Rénovation d’un appartement",
+		quote: "Une prestation clé en main. Le temps gagné a été précieux. Les échanges sont fluides.",
+	},
+];
+
+const googleReviewsUrl = "https://www.google.com/maps?cid=15104223004502740442";
 
 const methodSteps = [
 	["01", "Clarifier", "Objectifs, contraintes, budget et potentiel du lieu."],
@@ -107,7 +127,7 @@ const methodSteps = [
 					</div>
 				</section>
 
-				<section id="projets" class="border-b border-line-blue/10 bg-paper-warm py-20 lg:py-24">
+				<section id="projets" class="border-b border-line-blue/10 bg-paper-warm py-16 lg:py-20">
 					<div class="site-shell">
 						<div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
 							<div>
@@ -116,58 +136,87 @@ const methodSteps = [
 							</div>
 							<p class="text-ink-soft">Appartement des années 2000, maison des années 30 ou logement neuf : chaque projet part des usages pour composer un lieu singulier, jusque dans les agencements et les détails.</p>
 						</div>
-						<article class="surface mt-12 grid overflow-hidden bg-paper shadow-soft lg:grid-cols-[1.25fr_0.75fr]">
+						<article class="surface mt-10 grid overflow-hidden bg-paper shadow-soft lg:grid-cols-[1.25fr_0.75fr]">
 							<img src={projects[0].image} alt={projects[0].alt} class="aspect-[4/3] h-full min-h-80 w-full object-cover lg:aspect-auto" loading="eager" />
 							<div class="flex flex-col justify-center p-7 md:p-10">
-								<p class="eyebrow">{projects[0].number} · Projet repère</p>
+								<p class="eyebrow">{projects[0].number} · {projects[0].name}</p>
 								<p class="mt-4 text-sm font-semibold text-ink-soft">{projects[0].meta}</p>
-								<h3 class="display-serif mt-3 text-3xl text-line-blue">{projects[0].title}</h3>
-								<p class="mt-5 leading-7 text-ink-soft">{projects[0].description}</p>
+								<h3 class="display-serif mt-3 text-2xl text-line-blue">{projects[0].title}</h3>
+								<p class="mt-4 text-sm leading-6 text-ink-soft">{projects[0].description}</p>
 								<p class="mt-5 text-sm font-semibold leading-6 text-line-blue">{projects[0].details}</p>
 								<p class="mt-6 text-xs text-ink-soft">{projects[0].credit}</p>
 							</div>
 						</article>
 
-						<div class="mt-8 grid gap-8 md:grid-cols-2">
+						<div class="mt-6 grid gap-6 md:grid-cols-2">
 							{projects.slice(1).map((project) => (
 								<article class="surface overflow-hidden bg-paper shadow-soft">
-									<img src={project.image} alt={project.alt} class="aspect-[4/3] w-full object-cover" loading="lazy" />
-									<div class="p-6 md:p-8">
+									<img src={project.image} alt={project.alt} class="aspect-[3/2] w-full object-cover" loading="lazy" />
+									<div class="p-6">
 										<p class="eyebrow">{project.number} · {project.name}</p>
-										<p class="mt-4 text-sm font-semibold text-ink-soft">{project.meta}</p>
-										<h3 class="display-serif mt-3 text-3xl text-line-blue">{project.title}</h3>
-										<p class="mt-4 leading-7 text-ink-soft">{project.description}</p>
-										<p class="mt-5 text-sm font-semibold leading-6 text-line-blue">{project.details}</p>
-										{project.credit && <p class="mt-6 text-xs text-ink-soft">{project.credit}</p>}
+										<p class="mt-3 text-sm font-semibold text-ink-soft">{project.meta}</p>
+										<h3 class="display-serif mt-3 text-2xl text-line-blue">{project.title}</h3>
+										<p class="mt-3 text-sm leading-6 text-ink-soft">{project.description}</p>
+										<p class="mt-4 text-sm font-semibold leading-6 text-line-blue">{project.details}</p>
+										{project.credit && <p class="mt-5 text-xs text-ink-soft">{project.credit}</p>}
 									</div>
 								</article>
 							))}
 						</div>
 
-						<div class="mt-10 flex flex-col items-start justify-between gap-5 border-t border-line-blue/15 pt-8 md:flex-row md:items-center">
-							<p class="max-w-2xl text-lg text-ink-soft">Vous avez un appartement ou une maison à transformer ? Échangeons sur vos usages, votre calendrier et le potentiel du lieu.</p>
+						<div class="mt-8 flex flex-col items-start justify-between gap-5 border-t border-line-blue/15 pt-7 md:flex-row md:items-center">
+							<p class="max-w-2xl text-ink-soft">Vous avez un appartement ou une maison à transformer ? Échangeons sur vos usages, votre calendrier et le potentiel du lieu.</p>
 							<a href="#contact" class="btn btn-primary shrink-0">Parler de mon projet</a>
 						</div>
 					</div>
 				</section>
 
-				<section class="border-b border-line-blue/10 bg-paper">
-					<div class="site-shell grid gap-10 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-24">
-						<div>
-							<p class="eyebrow">Une écoute, deux horizons</p>
-							<h3 class="display-serif mt-3 text-4xl text-line-blue">Un cadre clair pour décider sereinement</h3>
-							<p class="mt-5 text-ink-soft">Chaque projet commence par une compréhension fine du lieu, de vos usages et des décisions qui comptent vraiment.</p>
+				<section id="avis" class="border-b border-line-blue/10 bg-paper py-14 lg:py-16">
+					<div class="site-shell">
+						<div class="flex flex-col gap-5 border-b border-line-blue/15 pb-7 md:flex-row md:items-end md:justify-between">
+							<div>
+								<p class="eyebrow">Avis clients</p>
+								<h2 class="display-serif mt-3 max-w-2xl text-3xl text-line-blue md:text-4xl">Des projets transformés, des travaux vécus sereinement</h2>
+							</div>
+							<div class="shrink-0 md:text-right">
+								<p class="text-lg font-bold tracking-[0.12em] text-line-gold-ink" aria-label="5 étoiles sur 5">★★★★★</p>
+								<p class="mt-1 text-sm font-semibold text-line-blue">5,0 sur 5 · 8 avis Google</p>
+								<a href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-sm font-bold text-line-blue underline decoration-line-gold underline-offset-4">Lire les avis sur Google</a>
+							</div>
 						</div>
-						<div class="grid border-y border-line-blue/15 md:grid-cols-2">
-							<article id="particuliers" class="py-7 pr-0 md:pr-7">
+
+						<div class="grid md:grid-cols-3">
+							{googleReviews.map((review, index) => (
+								<blockquote class:list={["py-7 md:px-7 md:py-8", index > 0 && "border-t border-line-blue/15 md:border-l md:border-t-0", index === 0 && "md:pl-0", index === googleReviews.length - 1 && "md:pr-0"]}>
+									<p class="display-serif text-lg leading-relaxed text-line-blue md:text-xl">« {review.quote} »</p>
+									<p class="mt-4 text-sm font-bold tracking-[0.1em] text-line-gold-ink" aria-label="5 étoiles sur 5">★★★★★</p>
+									<footer class="mt-2 text-sm">
+										<cite class="not-italic font-bold text-ink">{review.name}</cite>
+										<p class="mt-1 leading-5 text-ink-soft">{review.context}</p>
+									</footer>
+								</blockquote>
+							))}
+						</div>
+					</div>
+				</section>
+
+				<section class="border-b border-line-blue/10 bg-paper">
+					<div class="site-shell grid gap-10 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-20">
+						<div>
+							<p class="eyebrow">Particuliers et professionnels</p>
+							<h3 class="display-serif mt-3 text-3xl text-line-blue">Révéler le potentiel des lieux pour transformer la manière d’y vivre et d’y travailler</h3>
+							<p class="mt-5 text-sm leading-6 text-ink-soft">Chaque projet part des usages, des aspirations et du potentiel du bâti pour faire émerger une transformation juste et réalisable.</p>
+						</div>
+						<div class="grid border-y border-line-blue/15 md:grid-cols-[1.08fr_0.92fr]">
+							<article id="particuliers" class="py-7 pr-0 md:pr-8">
 								<p class="text-sm font-bold text-line-gold-ink">Pour les particuliers</p>
-								<h4 class="mt-4 text-2xl font-bold text-line-blue">Rendre un lieu évident à vivre</h4>
-								<p class="mt-4 text-ink-soft">Clarifier les priorités, révéler le potentiel et préparer les arbitrages avant les travaux.</p>
+								<h4 class="mt-4 text-xl font-bold text-line-blue">Repenser votre appartement ou votre maison autour de votre façon de vivre</h4>
+								<p class="mt-4 text-sm leading-6 text-ink-soft">Une transformation globale qui articule espaces, lumière, matériaux, agencements sur mesure et accompagnement des travaux.</p>
 							</article>
-							<article id="professionnels" class="border-t border-line-blue/15 py-7 md:border-l md:border-t-0 md:pl-7">
+							<article id="professionnels" class="border-t border-line-blue/15 py-7 md:border-l md:border-t-0 md:pl-8">
 								<p class="text-sm font-bold text-line-gold-ink">Pour les professionnels</p>
-								<h4 class="mt-4 text-2xl font-bold text-line-blue">Créer un espace aligné et accueillant</h4>
-								<p class="mt-4 text-ink-soft">Faire parler la marque, les usages et les modes de collaboration sans surcharger l'espace.</p>
+								<h4 class="mt-4 text-xl font-bold text-line-blue">Transformer les espaces de travail avec celles et ceux qui les vivent</h4>
+								<p class="mt-4 text-sm leading-6 text-ink-soft">Une démarche de co-conception pour faire émerger les usages, projeter les évolutions et créer un lieu cohérent avec l’identité et les ambitions de l’organisation.</p>
 							</article>
 						</div>
 					</div>
