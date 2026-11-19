@@ -13,6 +13,7 @@ const navItems = [
 const projects = [
 	{
 		number: "01",
+		slug: "meudon",
 		name: "Meudon",
 		meta: "Appartement · 90 m²",
 		title: "Réinventer les espaces, révéler les personnalités",
@@ -24,6 +25,7 @@ const projects = [
 	},
 	{
 		number: "02",
+		slug: "viroflay",
 		name: "Viroflay",
 		meta: "Maison des années 30 · env. 145 m²",
 		title: "Faire évoluer une maison sans effacer son histoire",
@@ -35,12 +37,13 @@ const projects = [
 	},
 	{
 		number: "03",
+		slug: "boulogne",
 		name: "Boulogne-Billancourt",
 		meta: "Appartement neuf · env. 45 m²",
 		title: "Donner une âme à un appartement neuf",
 		description: "Une cuisine avec îlot convivial, des rangements sur mesure et un intérieur inspiré par le design transforment un appartement neuf en lieu de vie singulier et fonctionnel.",
 		details: "Conception intérieure · Cuisine · Rangements et mobilier sur mesure",
-		image: "/images/projects/boulogne/boulogne-project-cover.webp",
+		image: "/images/projects/boulogne/gallery/boulogne-03-salon-terrasse.webp",
 		alt: "Salon lumineux avec meuble vert sur mesure et terrasse dans un appartement à Boulogne-Billancourt",
 		credit: "Photographies © Laurence Gaillard / lignes et courbes",
 	},
@@ -144,6 +147,7 @@ const accompanimentSteps = [
 								<h3 class="display-serif mt-3 text-2xl text-line-blue">{projects[0].title}</h3>
 								<p class="mt-4 text-sm leading-6 text-ink-soft">{projects[0].description}</p>
 								<p class="mt-5 text-sm font-semibold leading-6 text-line-blue">{projects[0].details}</p>
+								<a href={`/projets/${projects[0].slug}/`} class="mt-6 inline-flex text-sm font-bold text-line-blue underline decoration-line-gold underline-offset-4">Découvrir le projet</a>
 								<p class="mt-6 text-xs text-ink-soft">{projects[0].credit}</p>
 							</div>
 						</article>
@@ -158,6 +162,7 @@ const accompanimentSteps = [
 										<h3 class="display-serif mt-3 text-2xl text-line-blue">{project.title}</h3>
 										<p class="mt-3 text-sm leading-6 text-ink-soft">{project.description}</p>
 										<p class="mt-4 text-sm font-semibold leading-6 text-line-blue">{project.details}</p>
+										<a href={`/projets/${project.slug}/`} class="mt-5 inline-flex text-sm font-bold text-line-blue underline decoration-line-gold underline-offset-4">Découvrir le projet</a>
 										{project.credit && <p class="mt-5 text-xs text-ink-soft">{project.credit}</p>}
 									</div>
 								</article>
@@ -267,12 +272,8 @@ const accompanimentSteps = [
 							<div class="grid gap-4 md:grid-cols-2">
 								<label class="grid gap-2 text-sm font-medium">Vous êtes<select name="profil" class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink"><option>Particulier</option><option>Professionnel</option></select></label>
 								<label class="grid gap-2 text-sm font-medium">Type de lieu<select name="lieu" class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink"><option value="">À préciser</option><option>Appartement</option><option>Maison</option><option>Bureaux ou lieu professionnel</option><option>Autre</option></select></label>
-								<label class="grid gap-2 text-sm font-medium">Accompagnement recherché<select name="accompagnement" class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink"><option value="">À préciser ensemble</option><option>Étude d’orientation</option><option>Conception</option><option>Préparation et suivi des travaux</option><option>Accompagnement complet</option></select></label>
 								<label class="grid gap-2 text-sm font-medium">Localisation<input name="localisation" class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Ville ou secteur" /></label>
-								<label class="grid gap-2 text-sm font-medium">Surface estimée <span class="font-normal text-ink-soft">(facultatif)</span><input name="surface" class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Ex. 90 m²" /></label>
-								<label class="grid gap-2 text-sm font-medium">Calendrier envisagé<select name="calendrier" class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink"><option value="">À définir</option><option>Dès que possible</option><option>Dans 3 à 6 mois</option><option>Dans 6 à 12 mois</option><option>Plus tard</option></select></label>
 							</div>
-							<label class="grid gap-2 text-sm font-medium">Budget travaux envisagé <span class="font-normal text-ink-soft">(facultatif)</span><select name="budget" class="rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink"><option value="">Je souhaite d’abord en parler</option><option>Moins de 50 000 €</option><option>De 50 000 à 100 000 €</option><option>De 100 000 à 200 000 €</option><option>Plus de 200 000 €</option></select></label>
 						</fieldset>
 
 						<fieldset class="grid gap-4 border-t border-line-blue/15 pt-6 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
