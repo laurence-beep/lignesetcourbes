@@ -48,18 +48,17 @@ const projects = {
     description: "À Boulogne-Billancourt, lignes et courbes a donné une âme à un appartement neuf d’environ 45 m² grâce à une conception intérieure globale et du mobilier sur mesure pensé pour les usages.",
     eyebrow: "Boulogne-Billancourt · Appartement neuf · Environ 45 m²",
     intro: "Un appartement neuf devenu un véritable lieu de vie, pensé pour recevoir, travailler, se ressourcer et se sentir bien chez soi.",
-    cover: "/images/projects/boulogne/gallery/boulogne-02-sejour-cuisine-perspective.webp",
+    cover: "/images/boulogne-hero-retouche-v2.jpg",
     coverAlt: "Séjour et cuisine ouverte associant mobilier blanc, bois et pièces de design dans un appartement à Boulogne-Billancourt",
     facts: ["Conception intérieure globale", "Cuisine et îlot sur mesure", "Mobilier conçu pour chaque pièce", "Environ 45 m² et terrasse"],
     sections: [
-      ["Donner une identité à un lieu neuf", "L’appartement offrait lumière, parquet et terrasse. Le projet lui donne une identité personnelle et organise sa surface compacte autour des usages du quotidien."],
-      ["Un îlot pour vivre et recevoir", "La cuisine se construit autour d’un îlot convivial. Rangements toute hauteur, palette claire et ouverture sur le séjour font circuler le regard jusqu’à la terrasse."],
-      ["Du sur-mesure, jusque dans les détails", "Placard vert pour la verrerie, tête de lit et micro-bureau intégrés, meubles de salle de bain fonctionnels : chaque élément est dessiné pour un usage précis. Couleurs, luminaires et pièces de design composent un intérieur singulier, sans surcharge."],
+      ["Un appartement neuf, une identité à révéler", "Dans 45 m² ouverts sur une terrasse, le projet organise les usages et donne au lieu une personnalité qui lui manquait."],
+      ["Du sur-mesure pour chaque usage", "Îlot convivial, placard pour la verrerie, tête de lit et micro-bureau intégrés : chaque élément est dessiné pour optimiser l’espace sans le surcharger."],
     ],
     gallery: [
-      ["/images/projects/boulogne/gallery/boulogne-10-salon-canape-terrasse.webp", "Vue d’ensemble du salon lumineux, de ses pièces de design et de la terrasse à Boulogne-Billancourt"],
-      ["/images/projects/boulogne/gallery/boulogne-01-cuisine-ilot-vue-generale.webp", "Vue d’ensemble de la cuisine ouverte et de son îlot dans un appartement à Boulogne-Billancourt"],
-      ["/images/projects/boulogne/gallery/boulogne-05-cuisine-rangements.webp", "Cuisine blanche sur mesure, îlot et composition de miroirs à Boulogne-Billancourt"],
+      ["/images/projects/boulogne/originals/sejour-terrasse-luminaire.jpeg", "Vue large du séjour depuis le canapé, avec le meuble USM, la terrasse et le grand luminaire à Boulogne-Billancourt"],
+      ["/images/projects/boulogne/originals/chambre-sur-mesure.jpeg", "Tête de lit, table de nuit et micro-bureau conçus sur mesure dans la chambre à Boulogne-Billancourt"],
+      ["/images/projects/boulogne/originals/couloir-placard-vert.jpeg", "Perspective du couloir vers le placard vert sur mesure, entre la cuisine et les œuvres encadrées"],
     ],
     quote: null,
     quoteBy: null,
@@ -114,13 +113,13 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
         </div>
       </section>
 
-      <section class="py-16 lg:py-20">
-        <div class="site-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+      <section class="py-12 lg:py-14">
+        <div class="site-shell grid gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
           <div>
             <p class="eyebrow">Le projet</p>
-            <h2 class="display-serif mt-3 text-3xl text-line-blue md:text-4xl">Une transformation pensée à partir des usages</h2>
+            <h2 class="display-serif mt-3 text-3xl text-line-blue">Une transformation pensée à partir des usages</h2>
           </div>
-          <div class="space-y-10">
+          <div class="grid gap-7 md:grid-cols-2">
             {project.sections.map(([title, text]) => (
               <section>
                 <h2 class="display-serif text-2xl text-line-blue">{title}</h2>
@@ -138,7 +137,18 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
             <h2 class="display-serif mt-3 text-3xl text-line-blue md:text-4xl">Le projet en images</h2>
             <div class="mt-8 grid gap-5 md:grid-cols-2">
               {project.gallery.map(([src, alt], index) => (
-                <img src={src} alt={alt} class:list={["w-full rounded-site object-cover shadow-soft", index % 3 === 0 ? "aspect-[4/3] md:row-span-2 md:h-full" : "aspect-[3/2]"]} loading="lazy" />
+                <img
+                  src={src}
+                  alt={alt}
+                  class:list={[
+                    "h-auto w-full rounded-site shadow-soft",
+                    index === 0 ? "md:col-span-2" : project.gallery.length === 2 ? "md:col-span-2 md:mx-auto md:max-w-[34rem]" : "",
+                    slug === "boulogne" && index === 0 ? "brightness-[.95] saturate-[.82] contrast-[1.03]" : "",
+                    slug === "boulogne" && index === 1 ? "brightness-[.98] saturate-[.78] contrast-[1.03]" : "",
+                    slug === "boulogne" && index === 2 ? "brightness-[.98] saturate-[.84] contrast-[1.03]" : "",
+                  ]}
+                  loading="lazy"
+                />
               ))}
             </div>
           </div>
