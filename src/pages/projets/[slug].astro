@@ -12,14 +12,18 @@ const projects = {
     coverAlt: "Cuisine ouverte sur le séjour avec îlot en noyer et quartzite dans un appartement rénové à Meudon",
     facts: ["Rénovation complète", "Redistribution des volumes", "Agencements sur mesure", "Travaux en 3,5 mois"],
     sections: [
-      ["Transformer l’espace pour changer la manière de l’habiter", "Clair côté jardin mais cloisonné et plus sombre côté rue, cet appartement traversant de 90 m² avait besoin d’une nouvelle organisation. Le projet recompose les volumes et la lumière pour rendre la vie quotidienne plus fluide, sans imposer aux propriétaires de changer durablement de logement."],
-      ["Une nouvelle géographie des usages", "L’ancienne chambre devient une cuisine ouverte. Une circulation traversante, une verrière en acier sur mesure et un meuble intégré dans le couloir relient les espaces. L’îlot devient le cœur convivial de l’appartement tandis que les rangements techniques se fondent dans les aménagements."],
-      ["Un néo-modernisme très personnel", "Noyer, quartzite, terracotta, bleu et laiton dialoguent avec des inspirations Bauhaus, années 50 et pop culture. Bibliothèque rouge, niches d’exposition, rangements intégrés et pièces d’eau graphiques donnent au lieu une identité profondément personnelle."],
-      ["De la conception au suivi du chantier", "Le projet a mobilisé plusieurs savoir-faire : entreprise tous corps d’état, menuiserie, cuisine, métallerie et marbrerie. L’anticipation des choix et des commandes a permis de tenir les 3,5 mois de travaux annoncés."],
+      ["Recomposer les volumes autour de la lumière", "La cuisine prend place dans une ancienne chambre et s’ouvre sur le séjour. La verrière en acier et la circulation traversante relient les espaces et rendent le quotidien plus fluide."],
+      ["Un intérieur sur mesure, profondément personnel", "Noyer, quartzite, terracotta, bleu et laiton donnent le ton. Bibliothèques, rangements intégrés et pièces d’eau graphiques transforment chaque usage sans effacer la personnalité des habitants."],
     ],
-    gallery: [],
-    quote: "Elle a su transformer en profondeur notre espace, en repensant les volumes, la circulation et les usages, tout en créant un univers qui nous ressemble vraiment.",
+    gallery: [
+      ["/images/projects/meudon/gallery/sejour-agencements-sur-mesure.jpg", "Séjour bleu avec bibliothèque et rangements dessinés sur mesure dans un appartement rénové à Meudon"],
+      ["/images/projects/meudon/gallery/cuisine-ilot-noyer.jpg", "Îlot en noyer, quartzite et luminaires en laiton dans la cuisine ouverte à Meudon"],
+      ["/images/projects/meudon/gallery/salle-de-bain-sur-mesure.jpg", "Salle de bain graphique avec meuble vasque en bois et faïence colorée à Meudon"],
+    ],
+    quote: "Son exigence dans la préparation, la qualité des choix et la rigueur dans le pilotage du chantier nous ont permis de vivre les travaux sereinement.",
     quoteBy: "Alexis · Avis Google · 5/5",
+    reviewUrl: "https://www.google.com/maps?cid=15104223004502740442",
+    cta: "Vous souhaitez repenser les volumes de votre intérieur et créer des solutions sur mesure adaptées à votre quotidien ?",
     credit: "Photographies © Bastien Corre",
   },
   viroflay: {
@@ -53,15 +57,16 @@ const projects = {
     facts: ["Conception intérieure globale", "Cuisine et îlot sur mesure", "Mobilier conçu pour chaque pièce", "Environ 45 m² et terrasse"],
     sections: [
       ["Un appartement neuf, une identité à révéler", "Dans 45 m² ouverts sur une terrasse, le projet organise les usages et donne au lieu une personnalité qui lui manquait."],
-      ["Du sur-mesure pour chaque usage", "Îlot convivial, placard pour la verrerie, tête de lit et micro-bureau intégrés : chaque élément est dessiné pour optimiser l’espace sans le surcharger."],
+      ["Du sur-mesure pour chaque usage", "Îlot convivial, placard pour la verrerie, tête de lit et espace de travail intégré : chaque élément est dessiné pour optimiser l’espace sans le surcharger."],
     ],
     gallery: [
       ["/images/projects/boulogne/originals/sejour-terrasse-luminaire.jpeg", "Vue large du séjour depuis le canapé, avec le meuble USM, la terrasse et le grand luminaire à Boulogne-Billancourt"],
-      ["/images/projects/boulogne/originals/chambre-sur-mesure.jpeg", "Tête de lit, table de nuit et micro-bureau conçus sur mesure dans la chambre à Boulogne-Billancourt"],
+      ["/images/projects/boulogne/originals/chambre-sur-mesure.jpeg", "Tête de lit, table de nuit et espace de travail conçus sur mesure dans la chambre à Boulogne-Billancourt"],
       ["/images/projects/boulogne/originals/couloir-placard-vert.jpeg", "Perspective du couloir vers le placard vert sur mesure, entre la cuisine et les œuvres encadrées"],
     ],
     quote: null,
     quoteBy: null,
+    cta: "Vous souhaitez révéler le potentiel de votre intérieur et concevoir des solutions adaptées à vos usages ?",
     credit: "Photographies © Laurence Gaillard / lignes et courbes",
   },
 };
@@ -162,6 +167,7 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
               <blockquote class="max-w-4xl">
                 <p class="display-serif text-2xl leading-relaxed text-line-blue md:text-3xl">« {project.quote} »</p>
                 <footer class="mt-4 text-sm font-semibold text-ink-soft">{project.quoteBy}</footer>
+                {project.reviewUrl && <a href={project.reviewUrl} target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-sm font-bold text-line-blue underline decoration-line-gold underline-offset-4">Lire les avis sur Google</a>}
               </blockquote>
             ) : <div></div>}
             <p class="text-xs text-ink-soft">{project.credit}</p>
@@ -174,6 +180,7 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
           <div>
             <p class="eyebrow text-line-gold-soft">Votre projet</p>
             <h2 class="display-serif mt-3 text-3xl md:text-4xl">Et si nous parlions de votre lieu ?</h2>
+            {project.cta && <p class="mt-3 max-w-2xl text-white/80">{project.cta}</p>}
           </div>
           <a href="/#contact" class="btn bg-white text-line-blue hover:bg-paper-warm">Parler de mon projet</a>
         </div>
