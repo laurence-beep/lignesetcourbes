@@ -10,18 +10,18 @@ const projects = {
     intro: "Un appartement traversant recomposé autour de la lumière, de la convivialité et de la personnalité de ses habitants.",
     cover: "/images/projects/meudon/meudon-cover.jpg",
     coverAlt: "Cuisine ouverte sur le séjour avec îlot en noyer et quartzite dans un appartement rénové à Meudon",
-    facts: ["Rénovation complète", "Redistribution des volumes", "Agencements sur mesure", "Travaux en 3,5 mois"],
+    facts: ["Mission globale jusqu’à la réception", "Redistribution des volumes", "Sur-mesure dans cinq espaces", "Travaux en 3,5 mois"],
     sections: [
       ["Recomposer les volumes autour de la lumière", "La cuisine prend place dans une ancienne chambre et s’ouvre sur le séjour. La verrière en acier et la circulation traversante relient les espaces et rendent le quotidien plus fluide."],
-      ["Un intérieur sur mesure, profondément personnel", "Noyer, quartzite, terracotta, bleu et laiton donnent le ton. Bibliothèques, rangements intégrés et pièces d’eau graphiques transforment chaque usage sans effacer la personnalité des habitants."],
+      ["Un projet largement dessiné sur mesure", "Cuisine, bureau, chambres, entrée et toilettes sont conçus pour leurs usages. Noyer, quartzite, terracotta, bleu et laiton composent l’ensemble, avec une palette Le Corbusier, des peintures Farrow & Ball et des interrupteurs Jung."],
+      ["Une mission globale, jusqu’à la réception", "La mission couvre la conception, la consultation des entreprises, le choix des matériaux, des équipements et des luminaires, les calepinages de la salle de bain et du sol de la cuisine, la coordination des différents spécialistes, le suivi des travaux et la réception."],
     ],
     gallery: [
-      ["/images/projects/meudon/gallery/vue-ensemble-cuisine-bibliotheque.jpg", "Vue d’ensemble de la cuisine ouverte, de la bibliothèque arrondie et des agencements en noyer à Meudon", "wide"],
-      ["/images/projects/meudon/gallery/entree-terracotta-noyer-hd.jpg", "Entrée terracotta et bibliothèque arrondie en noyer dessinées sur mesure à Meudon", "portrait"],
-      ["/images/projects/meudon/gallery/ilot-noyer-luminaires-hd.jpg", "Îlot en noyer et quartzite sous des luminaires en laiton dans la cuisine ouverte à Meudon", "portrait"],
-      ["/images/projects/meudon/gallery/cuisine-verriere-ilot.jpg", "Cuisine ouverte avec îlot, verrière en acier et bibliothèque dans le séjour à Meudon", "wide"],
-      ["/images/projects/meudon/gallery/chambre-sur-mesure-hd.jpg", "Chambre avec tête de lit, rangements et niches en bois dessinés sur mesure à Meudon", "landscape"],
-      ["/images/projects/meudon/gallery/salle-de-bain-ensemble-hd.jpg", "Salle de bain avec douche, meuble vasque arrondi en bois et faïence graphique à Meudon", "landscape"],
+      ["/images/projects/meudon/gallery/vue-ensemble-cuisine-bibliotheque.webp", "Vue d’ensemble de la cuisine ouverte, de la bibliothèque arrondie et des agencements en noyer à Meudon", "wide"],
+      ["/images/projects/meudon/gallery/entree-terracotta-noyer-hd.webp", "Entrée terracotta et bibliothèque arrondie en noyer dessinées sur mesure à Meudon", "portrait"],
+      ["/images/projects/meudon/gallery/ilot-noyer-luminaires-hd.webp", "Îlot en noyer et quartzite sous des luminaires en laiton dans la cuisine ouverte à Meudon", "portrait"],
+      ["/images/projects/meudon/gallery/chambre-sur-mesure-hd.webp", "Chambre avec tête de lit, rangements et niches en bois dessinés sur mesure à Meudon", "landscape"],
+      ["/images/projects/meudon/gallery/salle-de-bain-ensemble-hd.webp", "Salle de bain avec douche, meuble vasque arrondi en bois et faïence graphique à Meudon", "landscape"],
     ],
     quote: "Son exigence dans la préparation, la qualité des choix et la rigueur dans le pilotage du chantier nous ont permis de vivre les travaux sereinement.",
     quoteBy: "Alexis · Avis Google · 5/5",
@@ -97,7 +97,8 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
       <div class="site-shell flex min-h-20 items-center justify-between gap-4">
         <a href="/" aria-label="Retour à l’accueil"><img src="/brand/lignes-et-courbes-logo.svg" alt="Lignes et courbes" class="h-14 w-auto sm:h-16" /></a>
         <nav class="flex items-center gap-4 text-sm font-medium text-ink-soft" aria-label="Navigation du projet">
-          <a href="/#projets" class="hover:text-line-teal-ink">Les réalisations</a>
+          <a href="/#projets" class="hidden hover:text-line-teal-ink sm:inline">Les réalisations</a>
+          <a href="/#contact" class="btn btn-primary px-3 py-2 text-xs sm:hidden">Me contacter</a>
           <a href="/#contact" class="btn btn-primary hidden sm:inline-flex">Parler de mon projet</a>
         </nav>
       </div>
@@ -128,8 +129,8 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
             <h2 class="display-serif mt-3 text-3xl text-line-blue">Une transformation pensée à partir des usages</h2>
           </div>
           <div class="grid gap-7 md:grid-cols-2">
-            {project.sections.map(([title, text]) => (
-              <section>
+            {project.sections.map(([title, text], index) => (
+              <section class:list={[project.sections.length % 2 === 1 && index === project.sections.length - 1 ? "md:col-span-2" : ""]}>
                 <h2 class="display-serif text-2xl text-line-blue">{title}</h2>
                 <p class="mt-4 leading-7 text-ink-soft">{text}</p>
               </section>
