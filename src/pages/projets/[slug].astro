@@ -16,11 +16,12 @@ const projects = {
       ["Un intérieur sur mesure, profondément personnel", "Noyer, quartzite, terracotta, bleu et laiton donnent le ton. Bibliothèques, rangements intégrés et pièces d’eau graphiques transforment chaque usage sans effacer la personnalité des habitants."],
     ],
     gallery: [
-      ["/images/projects/meudon/gallery/cuisine-verriere-bibliotheque.jpg", "Vue frontale de la cuisine ouverte avec verrière, bibliothèque et plaque intégrée dans l’îlot à Meudon"],
-      ["/images/projects/meudon/gallery/cuisine-ilot-noyer.jpg", "Îlot en noyer, quartzite et luminaires en laiton dans la cuisine ouverte à Meudon"],
-      ["/images/projects/meudon/gallery/entree-terracotta-noyer.jpg", "Meuble d’entrée terracotta et bibliothèque arrondie en noyer dessinés sur mesure à Meudon"],
-      ["/images/projects/meudon/gallery/chambre-agencements-sur-mesure.jpg", "Chambre avec tête de lit, rangements et niches en bois dessinés sur mesure à Meudon"],
-      ["/images/projects/meudon/gallery/salle-de-bain-sur-mesure.jpg", "Salle de bain graphique avec meuble vasque en bois et faïence colorée à Meudon"],
+      ["/images/projects/meudon/gallery/vue-ensemble-cuisine-bibliotheque.jpg", "Vue d’ensemble de la cuisine ouverte, de la bibliothèque arrondie et des agencements en noyer à Meudon", "wide"],
+      ["/images/projects/meudon/gallery/entree-terracotta-noyer-hd.jpg", "Entrée terracotta et bibliothèque arrondie en noyer dessinées sur mesure à Meudon", "portrait"],
+      ["/images/projects/meudon/gallery/ilot-noyer-luminaires-hd.jpg", "Îlot en noyer et quartzite sous des luminaires en laiton dans la cuisine ouverte à Meudon", "portrait"],
+      ["/images/projects/meudon/gallery/cuisine-verriere-ilot.jpg", "Cuisine ouverte avec îlot, verrière en acier et bibliothèque dans le séjour à Meudon", "wide"],
+      ["/images/projects/meudon/gallery/chambre-sur-mesure-hd.jpg", "Chambre avec tête de lit, rangements et niches en bois dessinés sur mesure à Meudon", "landscape"],
+      ["/images/projects/meudon/gallery/salle-de-bain-ensemble-hd.jpg", "Salle de bain avec douche, meuble vasque arrondi en bois et faïence graphique à Meudon", "landscape"],
     ],
     quote: "Son exigence dans la préparation, la qualité des choix et la rigueur dans le pilotage du chantier nous ont permis de vivre les travaux sereinement.",
     quoteBy: "Alexis · Avis Google · 5/5",
@@ -143,13 +144,13 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
             <p class="eyebrow">Galerie</p>
             <h2 class="display-serif mt-3 text-3xl text-line-blue md:text-4xl">Le projet en images</h2>
             <div class="mt-8 grid gap-5 md:grid-cols-2">
-              {project.gallery.map(([src, alt], index) => (
+              {project.gallery.map(([src, alt, layout], index) => (
                 <img
                   src={src}
                   alt={alt}
                   class:list={[
                     "h-auto w-full rounded-site shadow-soft",
-                    index === 0 ? "md:col-span-2" : project.gallery.length === 2 ? "md:col-span-2 md:mx-auto md:max-w-[34rem]" : "",
+                    layout === "wide" || (index === 0 && !layout) ? "md:col-span-2" : project.gallery.length === 2 ? "md:col-span-2 md:mx-auto md:max-w-[34rem]" : "",
                     slug === "boulogne" && index === 0 ? "brightness-[.95] saturate-[.82] contrast-[1.03]" : "",
                     slug === "boulogne" && index === 1 ? "brightness-[.98] saturate-[.78] contrast-[1.03]" : "",
                     slug === "boulogne" && index === 2 ? "brightness-[.98] saturate-[.84] contrast-[1.03]" : "",
