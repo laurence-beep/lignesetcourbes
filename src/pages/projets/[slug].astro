@@ -32,21 +32,25 @@ const projects = {
   viroflay: {
     title: "Viroflay | Faire évoluer une maison sans effacer son histoire",
     metaTitle: "Rénovation d’une maison à Viroflay (78) | lignes et courbes",
-    description: "À Viroflay, lignes et courbes a repensé une maison des années 30 de 145 m² : cuisine ouverte, verrière bois, agencements sur mesure et lumière retrouvée.",
-    eyebrow: "Viroflay · Maison des années 30 · Environ 145 m²",
+    description: "À Viroflay, lignes et courbes a repensé une maison des années 30 de 145 m² : cuisine agrandie, verrières en bois, banquette et mobilier sur mesure.",
+    eyebrow: "Viroflay · Maison des années 30 · Environ 145 m² · 2024",
     intro: "Une maison familiale rendue plus lumineuse, plus fluide et plus accueillante, tout en restant fidèle à son histoire.",
-    cover: "/images/projects/viroflay/viroflay-cover-v2.jpg",
+    cover: "/images/projects/viroflay/viroflay-cover-v2.webp",
     coverAlt: "Cuisine ouverte avec banquette et verrière en bois dans une maison rénovée à Viroflay",
-    facts: ["Rénovation complète", "Maison des années 30", "Verrière et mobilier sur mesure", "Palette inspirée du jardin"],
+    facts: ["Maison des années 30 et extension", "Cuisine et circulations repensées", "Verrière et banquette sur mesure", "Salle de bain et chambre parentale"],
     sections: [
-      ["Une maison familiale, une nouvelle étape de vie", "Avec le départ progressif des enfants, les propriétaires souhaitaient faire évoluer leurs espaces. Agrandie par une extension, la maison avait besoin de retrouver une continuité entre ses différentes parties et une organisation plus adaptée au quotidien."],
-      ["Retrouver la lumière et la convivialité", "La cuisine auparavant fermée est agrandie vers le séjour. Un bar massif laisse place à une banquette sur mesure surmontée d’une verrière en bois. La table de salle à manger est repositionnée et une porte coulissante vitrée laisse pénétrer la lumière du matin."],
-      ["Une atmosphère inspirée de la nature", "Des verts doux, des tonalités rosées et des matériaux naturels répondent au jardin. La salle de bain est entièrement repensée et la chambre parentale associe tête de lit, chevets et commode sur mesure dans une palette apaisante."],
-      ["Préserver l’esprit de la maison", "Les interventions font dialoguer l’architecture d’origine, l’extension et les nouveaux usages. Le projet modernise la maison sans lui imposer un style uniforme ni effacer son caractère."],
+      ["Relier la maison d’origine et son extension", "La maison des années 30 avait été agrandie, mais les espaces de vie manquaient de continuité. L’enjeu était de retrouver une organisation plus fluide pour un couple dont les enfants quittent progressivement le foyer, sans effacer le caractère du lieu."],
+      ["Faire circuler la lumière et les usages", "La cuisine fermée est agrandie vers le séjour. Le bar massif laisse place à une banquette sur mesure et à une verrière en bois. La table est repositionnée et une porte coulissante vitrée capte la lumière du matin."],
+      ["Une atmosphère douce, inspirée du jardin", "Verts doux, beige rosé, terracotta clair et matériaux naturels relient les différentes parties de la maison. La salle de bain est entièrement repensée et la chambre parentale associe tête de lit, commode et chevets arrondis conçus sur mesure."],
     ],
-    gallery: [],
-    quote: "Elle a su faire évoluer les espaces en douceur, en apportant plus de lumière, de fluidité et de cohérence, tout en respectant le caractère de la maison.",
+    gallery: [
+      ["/images/projects/viroflay/gallery/chantier-redistribution.webp", "Cuisine et espaces de vie en cours de redistribution pendant le chantier à Viroflay", "wide", "Pendant les travaux · Redistribution de la cuisine et des espaces de vie"],
+      ["/images/projects/viroflay/gallery/verriere-cuisine.webp", "Verrière en bois ouvrant la cuisine agrandie sur la salle à manger à Viroflay", "landscape"],
+      ["/images/projects/viroflay/gallery/banquette-salle-a-manger.webp", "Banquette arrondie sur mesure et salle à manger reliée à l’extension à Viroflay", "landscape"],
+    ],
+    quote: "Aujourd’hui, notre maison est à la fois plus agréable, plus fonctionnelle et plus accueillante, tout en restant fidèle à son esprit d’origine.",
     quoteBy: "Catherine · Avis Google · 5/5",
+    reviewUrl: "https://www.google.com/maps?cid=15104223004502740442",
     credit: "Photographies © Laurence Gaillard / lignes et courbes",
   },
   boulogne: {
@@ -145,19 +149,24 @@ const otherProjects = Object.entries(projects).filter(([key]) => key !== slug);
             <p class="eyebrow">Galerie</p>
             <h2 class="display-serif mt-3 text-3xl text-line-blue md:text-4xl">Le projet en images</h2>
             <div class="mt-8 grid gap-5 md:grid-cols-2">
-              {project.gallery.map(([src, alt, layout], index) => (
-                <img
-                  src={src}
-                  alt={alt}
-                  class:list={[
-                    "h-auto w-full rounded-site shadow-soft",
+              {project.gallery.map(([src, alt, layout, caption], index) => (
+                <figure class:list={[
+                    "min-w-0",
                     layout === "wide" || (index === 0 && !layout) ? "md:col-span-2" : project.gallery.length === 2 ? "md:col-span-2 md:mx-auto md:max-w-[34rem]" : "",
+                  ]}>
+                  <img
+                    src={src}
+                    alt={alt}
+                    class:list={[
+                    "h-auto w-full rounded-site shadow-soft",
                     slug === "boulogne" && index === 0 ? "brightness-[.95] saturate-[.82] contrast-[1.03]" : "",
                     slug === "boulogne" && index === 1 ? "brightness-[.98] saturate-[.78] contrast-[1.03]" : "",
                     slug === "boulogne" && index === 2 ? "brightness-[.98] saturate-[.84] contrast-[1.03]" : "",
                   ]}
-                  loading="lazy"
-                />
+                    loading="lazy"
+                  />
+                  {caption && <figcaption class="mt-3 text-sm text-ink-soft">{caption}</figcaption>}
+                </figure>
               ))}
             </div>
           </div>
