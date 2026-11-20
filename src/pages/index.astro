@@ -19,7 +19,7 @@ const projects = [
 		title: "Réinventer les espaces, révéler les personnalités",
 		description: "Une redistribution des volumes, une cuisine ouverte et des agencements sur mesure transforment un appartement cloisonné en lieu de vie lumineux, convivial et profondément personnel.",
 		details: "Conception globale · Agencements sur mesure · Suivi jusqu’à la réception",
-		image: "/images/projects/meudon/meudon-cover.jpg",
+		image: "/images/projects/meudon/gallery/vue-ensemble-cuisine-bibliotheque.webp",
 		alt: "Cuisine ouverte sur le séjour avec îlot en noyer et quartzite dans un appartement rénové à Meudon",
 		credit: "Photographies © Bastien Corre",
 	},
@@ -115,7 +115,7 @@ const accompanimentSteps = [
 				<section class="border-b border-line-blue/10 bg-paper-warm">
 					<div class="site-shell grid gap-8 py-12 md:py-16 lg:min-h-[calc(100svh-80px)] lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-0 lg:py-20">
 						<figure class="hero-image-frame order-1 lg:pr-0">
-							<img src="/images/boulogne-hero-retouche-v2.jpg" alt="Cuisine ouverte blanche avec îlot central et suspension graphique dans un appartement à Boulogne-Billancourt" class="aspect-[4/3] w-full rounded-site object-cover shadow-soft lg:aspect-[5/4]" />
+							<img src="/images/projects/meudon/meudon-cover.jpg" alt="Cuisine ouverte en noyer et séjour lumineux dans un appartement rénové à Meudon" class="aspect-[4/3] w-full rounded-site object-cover shadow-soft lg:aspect-[5/4]" />
 						</figure>
 						<div class="surface relative z-10 order-2 bg-paper p-7 shadow-soft md:p-10 lg:-ml-12 lg:p-12">
           <p class="eyebrow">Architecte d'intérieur à Sèvres · Paris et Ouest parisien</p>
@@ -262,11 +262,11 @@ const accompanimentSteps = [
 						</div>
 						<div class="mt-8 text-sm font-medium leading-7 text-white/90">
 							<p>19, rue des Verrières - 92310 Sèvres</p>
-							<p>contact@lignesetcourbes.com</p>
-							<p>+33 6 50 14 39 52</p>
+							<p><a href="mailto:contact@lignesetcourbes.com" class="underline decoration-line-gold underline-offset-4">contact@lignesetcourbes.com</a></p>
+							<p><a href="tel:+33650143952" class="underline decoration-line-gold underline-offset-4">+33 6 50 14 39 52</a></p>
 						</div>
 					</div>
-					<form class="surface mt-10 grid gap-6 bg-paper p-5 text-ink shadow-soft md:p-7 lg:grid-cols-[1.25fr_0.75fr]">
+					<form id="contact-form" class="surface mt-10 grid gap-6 bg-paper p-5 text-ink shadow-soft md:p-7 lg:grid-cols-[1.25fr_0.75fr]">
 						<fieldset class="grid gap-4">
 							<legend class="display-serif mb-4 text-2xl text-line-blue">Votre projet</legend>
 							<div class="grid gap-4 md:grid-cols-2">
@@ -286,7 +286,10 @@ const accompanimentSteps = [
 							<label class="grid gap-2 text-sm font-medium">Votre message<textarea name="message" class="min-h-28 rounded-site border border-line-blue/20 bg-white px-3 py-3 text-ink" placeholder="Quelques mots sur le lieu, vos besoins et vos contraintes"></textarea></label>
 						</fieldset>
 
-						<button type="button" class="btn btn-primary lg:col-span-2 lg:min-w-64 lg:justify-self-end">Échanger sur mon projet</button>
+						<div class="flex flex-col items-start gap-3 lg:col-span-2 lg:items-end">
+							<button type="submit" class="btn btn-primary lg:min-w-64">Préparer mon message</button>
+							<p id="contact-form-status" class="max-w-xl text-sm text-ink-soft" aria-live="polite">Votre messagerie s’ouvrira avec les informations saisies. Vous pourrez les vérifier avant l’envoi.</p>
+						</div>
 					</form>
 				</div>
 			</section>
@@ -303,6 +306,34 @@ const accompanimentSteps = [
 				</div>
 			</div>
 		</footer>
+
+		<script>
+			const form = document.querySelector<HTMLFormElement>("#contact-form");
+			const status = document.querySelector<HTMLElement>("#contact-form-status");
+
+			form?.addEventListener("submit", (event) => {
+				event.preventDefault();
+				if (!form.reportValidity()) return;
+
+				const data = new FormData(form);
+				const value = (name: string) => String(data.get(name) ?? "").trim();
+				const subject = `Projet ${value("lieu") || "d’architecture intérieure"} — ${value("localisation") || "premier échange"}`;
+				const body = [
+					`Nom : ${value("nom")}`,
+					`E-mail : ${value("email")}`,
+					`Téléphone : ${value("telephone") || "Non renseigné"}`,
+					`Profil : ${value("profil")}`,
+					`Type de lieu : ${value("lieu") || "À préciser"}`,
+					`Localisation : ${value("localisation") || "À préciser"}`,
+					"",
+					"Projet :",
+					value("message") || "À préciser",
+				].join("\n");
+
+				if (status) status.textContent = "Votre messagerie va s’ouvrir. Vérifiez votre demande avant de l’envoyer.";
+				window.location.href = `mailto:contact@lignesetcourbes.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+			});
+		</script>
 
 	</body>
 </html>
